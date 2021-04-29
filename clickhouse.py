@@ -169,7 +169,7 @@ def is_data_present(start_date_str, end_date_str, source):
     query = '''
         SELECT count()
         FROM {table}
-        WHERE Date >= '{start_date}' AND Date <= '{end_date}'
+        WHERE DateTime >= toDateTime('{start_date} 00:00:00') AND DateTime <= toDateTime('{end_date} 23:59:59')
     '''.format(table=table_name,
                start_date=start_date_str,
                end_date=end_date_str)
